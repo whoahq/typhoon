@@ -13,7 +13,7 @@ class C3Vector {
     C3Vector(float x, float y, float z)
         : x(x)
         , y(y)
-        , z(z){};
+        , z(z) {};
     C3Vector& operator*=(float a);
     float SquaredMag() const;
 };
