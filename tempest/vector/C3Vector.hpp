@@ -16,6 +16,7 @@ class C3Vector {
         , z(z) {};
     C3Vector& operator*=(float a);
     float Mag() const;
+    void Normalize();
     float SquaredMag() const;
 };
 

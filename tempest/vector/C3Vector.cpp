@@ -13,6 +13,10 @@ float C3Vector::Mag() const {
     return CMath::sqrt(this->SquaredMag());
 }
 
+void C3Vector::Normalize() {
+    this->operator*=(1.0f / this->Mag());
+}
+
 float C3Vector::SquaredMag() const {
     return this->x * this->x + this->y * this->y + this->z * this->z;
 }

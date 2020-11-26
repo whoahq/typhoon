@@ -60,6 +60,24 @@ TEST_CASE("C3Vector::Mag", "[vector]") {
     }
 }
 
+TEST_CASE("C3Vector::Normalize", "[vector]") {
+    SECTION("normalizes C3Vector(1.0f, 1.0f, 1.0f)") {
+        auto vector = C3Vector(1.0f, 1.0f, 1.0f);
+        vector.Normalize();
+        REQUIRE(vector.x == Approx(0.57735f));
+        REQUIRE(vector.y == Approx(0.57735f));
+        REQUIRE(vector.z == Approx(0.57735f));
+    }
+
+    SECTION("normalizes C3Vector(4.0f, 16.0f, 32.0f)") {
+        auto vector = C3Vector(4.0f, 16.0f, 32.0f);
+        vector.Normalize();
+        REQUIRE(vector.x == Approx(0.11111f));
+        REQUIRE(vector.y == Approx(0.44444f));
+        REQUIRE(vector.z == Approx(0.88888f));
+    }
+}
+
 TEST_CASE("C3Vector::SquaredMag", "[vector]") {
     SECTION("calculates squared mag") {
         auto vector = C3Vector(1.0f, 2.0f, 3.0f);
