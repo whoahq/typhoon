@@ -11,3 +11,8 @@ target_include_directories(tempest
     PUBLIC
         ${PROJECT_SOURCE_DIR}
 )
+
+target_link_libraries(tempest
+    PRIVATE
+        storm
+)

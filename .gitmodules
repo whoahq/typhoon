@@ -1,0 +1,3 @@
+[submodule "vendor/squall"]
+	path = vendor/squall
+	url = https://github.com/whoahq/squall

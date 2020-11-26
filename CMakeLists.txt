@@ -39,3 +39,4 @@ endif()
 
 add_subdirectory(tempest)
 add_subdirectory(test)
+add_subdirectory(vendor)
