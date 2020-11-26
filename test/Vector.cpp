@@ -99,3 +99,14 @@ TEST_CASE("C3Vector::SquaredMag", "[vector]") {
         REQUIRE(vector.SquaredMag() == 3.0f);
     }
 }
+
+TEST_CASE("C3Vector global operators", "[vector]") {
+    SECTION("C3Vector + C3Vector") {
+        auto vector1 = C3Vector(1.0f, 2.0f, 3.0f);
+        auto vector2 = C3Vector(4.0f, 5.0f, 6.0f);
+        auto vector3 = vector1 + vector2;
+        REQUIRE(vector3.x == 5.0f);
+        REQUIRE(vector3.y == 7.0f);
+        REQUIRE(vector3.z == 9.0f);
+    }
+}

@@ -20,3 +20,11 @@ void C3Vector::Normalize() {
 float C3Vector::SquaredMag() const {
     return this->x * this->x + this->y * this->y + this->z * this->z;
 }
+
+C3Vector operator+(const C3Vector& l, const C3Vector& r) {
+    float x = l.x + r.x;
+    float y = l.y + r.y;
+    float z = l.z + r.z;
+
+    return { x, y, z };
+}

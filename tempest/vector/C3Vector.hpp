@@ -20,4 +20,6 @@ class C3Vector {
     float SquaredMag() const;
 };
 
+C3Vector operator+(const C3Vector& l, const C3Vector& r);
+
 #endif
