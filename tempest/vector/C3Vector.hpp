@@ -15,6 +15,7 @@ class C3Vector {
         , y(y)
         , z(z) {};
     C3Vector& operator*=(float a);
+    float Mag() const;
     float SquaredMag() const;
 };
 

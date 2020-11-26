@@ -43,6 +43,23 @@ TEST_CASE("C3Vector::operator*=", "[vector]") {
     }
 }
 
+TEST_CASE("C3Vector::Mag", "[vector]") {
+    SECTION("calculates mag") {
+        auto vector = C3Vector(4.0f, 16.0f, 32.0f);
+        REQUIRE(vector.Mag() == 36.0f);
+    }
+
+    SECTION("calculates mag of C3Vector(0.0f, 0.0f, 0.0f)") {
+        auto vector = C3Vector(0.0f, 0.0f, 0.0f);
+        REQUIRE(vector.Mag() == 0.0f);
+    }
+
+    SECTION("calculates mag of C3Vector(-4.0f, -16.0f, -32.0f)") {
+        auto vector = C3Vector(-4.0f, -16.0f, -32.0f);
+        REQUIRE(vector.Mag() == 36.0f);
+    }
+}
+
 TEST_CASE("C3Vector::SquaredMag", "[vector]") {
     SECTION("calculates squared mag") {
         auto vector = C3Vector(1.0f, 2.0f, 3.0f);
