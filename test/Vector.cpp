@@ -1,6 +1,20 @@
 #include "tempest/Vector.hpp"
 #include "test/Test.hpp"
 
+TEST_CASE("C2Vector", "[vector]") {
+    SECTION("constructs with default constructor") {
+        C2Vector vector;
+        REQUIRE(vector.x == 0.0f);
+        REQUIRE(vector.y == 0.0f);
+    }
+
+    SECTION("constructs with xy constructor") {
+        auto vector = C2Vector(1.0f, 2.0f);
+        REQUIRE(vector.x == 1.0f);
+        REQUIRE(vector.y == 2.0f);
+    }
+}
+
 TEST_CASE("C3Vector", "[vector]") {
     SECTION("constructs with default constructor") {
         C3Vector vector;

@@ -6,6 +6,12 @@ class C2Vector {
     // Member variables
     float x = 0.0f;
     float y = 0.0f;
+
+    // Member functions
+    C2Vector() = default;
+    C2Vector(float x, float y)
+        : x(x)
+        , y(y) {};
 };
 
 #endif
