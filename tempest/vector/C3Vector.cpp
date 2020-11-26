@@ -28,3 +28,7 @@ C3Vector operator+(const C3Vector& l, const C3Vector& r) {
 
     return { x, y, z };
 }
+
+bool operator!=(const C3Vector& l, const C3Vector& r) {
+    return l.x != r.x || l.y != r.y || l.z != r.z;
+}
