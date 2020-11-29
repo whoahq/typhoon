@@ -40,6 +40,7 @@ class C44Matrix {
         , d1(d1)
         , d2(d2)
         , d3(d3) {};
+    C44Matrix Adjoint() const;
 };
 
 #endif
