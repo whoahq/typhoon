@@ -42,6 +42,7 @@ class C44Matrix {
         , d3(d3) {};
     C44Matrix Adjoint() const;
     float Determinant();
+    C44Matrix Inverse(float det) const;
 };
 
 C44Matrix operator*(const C44Matrix& l, float a);

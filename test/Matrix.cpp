@@ -128,6 +128,71 @@ TEST_CASE("C44Matrix::Determinant", "[matrix]") {
     }
 }
 
+TEST_CASE("C44Matrix::Inverse", "[matrix]") {
+    SECTION("returns inverse of identity matrix") {
+        C44Matrix matrix;
+        auto inverse = matrix.Inverse(matrix.Determinant());
+        CHECK(inverse.a0 == 1.0f);
+        CHECK(inverse.a1 == 0.0f);
+        CHECK(inverse.a2 == 0.0f);
+        CHECK(inverse.a3 == 0.0f);
+        CHECK(inverse.b0 == 0.0f);
+        CHECK(inverse.b1 == 1.0f);
+        CHECK(inverse.b2 == 0.0f);
+        CHECK(inverse.b3 == 0.0f);
+        CHECK(inverse.c0 == 0.0f);
+        CHECK(inverse.c1 == 0.0f);
+        CHECK(inverse.c2 == 1.0f);
+        CHECK(inverse.c3 == 0.0f);
+        CHECK(inverse.d0 == 0.0f);
+        CHECK(inverse.d1 == 0.0f);
+        CHECK(inverse.d2 == 0.0f);
+        CHECK(inverse.d3 == 1.0f);
+    }
+
+    SECTION("returns inverse of non-identity matrix") {
+        auto matrix = C44Matrix(1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f);
+        auto inverse = matrix.Inverse(matrix.Determinant());
+        CHECK(inverse.a0 == 0.25f);
+        CHECK(inverse.a1 == 0.25f);
+        CHECK(inverse.a2 == 0.25f);
+        CHECK(inverse.a3 == -0.25f);
+        CHECK(inverse.b0 == 0.25f);
+        CHECK(inverse.b1 == 0.25f);
+        CHECK(inverse.b2 == -0.25f);
+        CHECK(inverse.b3 == 0.25f);
+        CHECK(inverse.c0 == 0.25f);
+        CHECK(inverse.c1 == -0.25f);
+        CHECK(inverse.c2 == 0.25f);
+        CHECK(inverse.c3 == 0.25f);
+        CHECK(inverse.d0 == -0.25f);
+        CHECK(inverse.d1 == 0.25f);
+        CHECK(inverse.d2 == 0.25f);
+        CHECK(inverse.d3 == 0.25f);
+    }
+
+    SECTION("does not modify self") {
+        auto matrix = C44Matrix(1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f);
+        auto inverse = matrix.Inverse(matrix.Determinant());
+        CHECK(matrix.a0 == 1.0f);
+        CHECK(matrix.a1 == 1.0f);
+        CHECK(matrix.a2 == 1.0f);
+        CHECK(matrix.a3 == -1.0f);
+        CHECK(matrix.b0 == 1.0f);
+        CHECK(matrix.b1 == 1.0f);
+        CHECK(matrix.b2 == -1.0f);
+        CHECK(matrix.b3 == 1.0f);
+        CHECK(matrix.c0 == 1.0f);
+        CHECK(matrix.c1 == -1.0f);
+        CHECK(matrix.c2 == 1.0f);
+        CHECK(matrix.c3 == 1.0f);
+        CHECK(matrix.d0 == -1.0f);
+        CHECK(matrix.d1 == 1.0f);
+        CHECK(matrix.d2 == 1.0f);
+        CHECK(matrix.d3 == 1.0f);
+    }
+}
+
 TEST_CASE("C44Matrix global operators", "[matrix]") {
     SECTION("C44Matrix * float") {
         auto matrix1 = C44Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
