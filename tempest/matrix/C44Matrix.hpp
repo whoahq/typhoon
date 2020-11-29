@@ -44,4 +44,6 @@ class C44Matrix {
     float Determinant();
 };
 
+C44Matrix operator*(const C44Matrix& l, float a);
+
 #endif

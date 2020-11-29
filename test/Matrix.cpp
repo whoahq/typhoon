@@ -127,3 +127,26 @@ TEST_CASE("C44Matrix::Determinant", "[matrix]") {
         REQUIRE(determinant == -704.0f);
     }
 }
+
+TEST_CASE("C44Matrix global operators", "[matrix]") {
+    SECTION("C44Matrix * float") {
+        auto matrix1 = C44Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
+        auto matrix2 = matrix1 * 2.0f;
+        CHECK(matrix2.a0 == 2.0f);
+        CHECK(matrix2.a1 == 4.0f);
+        CHECK(matrix2.a2 == 6.0f);
+        CHECK(matrix2.a3 == 8.0f);
+        CHECK(matrix2.b0 == 10.0f);
+        CHECK(matrix2.b1 == 12.0f);
+        CHECK(matrix2.b2 == 14.0f);
+        CHECK(matrix2.b3 == 16.0f);
+        CHECK(matrix2.c0 == 18.0f);
+        CHECK(matrix2.c1 == 20.0f);
+        CHECK(matrix2.c2 == 22.0f);
+        CHECK(matrix2.c3 == 24.0f);
+        CHECK(matrix2.d0 == 26.0f);
+        CHECK(matrix2.d1 == 28.0f);
+        CHECK(matrix2.d2 == 30.0f);
+        CHECK(matrix2.d3 == 32.0f);
+    }
+}
