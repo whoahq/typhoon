@@ -107,3 +107,23 @@ TEST_CASE("C44Matrix::Adjoint", "[matrix]") {
         CHECK(matrix.d3 == 16.0f);
     }
 }
+
+TEST_CASE("C44Matrix::Determinant", "[matrix]") {
+    SECTION("returns determinant of identity matrix") {
+        C44Matrix matrix;
+        auto determinant = matrix.Determinant();
+        REQUIRE(determinant == 1.0f);
+    }
+
+    SECTION("returns determinant of zero matrix") {
+        auto matrix = C44Matrix(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        auto determinant = matrix.Determinant();
+        REQUIRE(determinant == 0.0f);
+    }
+
+    SECTION("returns determinant of non-identity matrix") {
+        auto matrix = C44Matrix(-1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, -11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
+        auto determinant = matrix.Determinant();
+        REQUIRE(determinant == -704.0f);
+    }
+}
