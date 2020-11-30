@@ -235,6 +235,29 @@ TEST_CASE("C44Matrix::Inverse", "[matrix]") {
     }
 }
 
+TEST_CASE("C44Matrix::RotateAroundZ", "[matrix]") {
+    SECTION("rotates around z-axis by given angle") {
+        auto matrix = C44Matrix(1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, -1.0f, 0.0f, 1.0f, -1.0f, 1.0f, 0.0f, 20.0f, 30.0f, 40.0f, 1.0f);
+        matrix.RotateAroundZ(3.1415927f);
+        CHECK(matrix.a0 == Approx(-1.0f));
+        CHECK(matrix.a1 == Approx(-1.0f));
+        CHECK(matrix.a2 == Approx(-1.0f));
+        CHECK(matrix.a3 == 0.0f);
+        CHECK(matrix.b0 == Approx(-1.0f));
+        CHECK(matrix.b1 == Approx(-1.0f));
+        CHECK(matrix.b2 == Approx(1.0f));
+        CHECK(matrix.b3 == 0.0f);
+        CHECK(matrix.c0 == Approx(1.0f));
+        CHECK(matrix.c1 == Approx(-1.0f));
+        CHECK(matrix.c2 == Approx(1.0f));
+        CHECK(matrix.c3 == 0.0f);
+        CHECK(matrix.d0 == 20.0f);
+        CHECK(matrix.d1 == 30.0f);
+        CHECK(matrix.d2 == 40.0f);
+        CHECK(matrix.d3 == 1.0f);
+    }
+}
+
 TEST_CASE("C44Matrix global operators", "[matrix]") {
     SECTION("C44Matrix * float") {
         auto matrix1 = C44Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);

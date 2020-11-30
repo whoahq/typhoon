@@ -60,6 +60,10 @@ C44Matrix C44Matrix::Inverse(float det) const {
     return this->Adjoint() * (1.0f / det);
 }
 
+void C44Matrix::RotateAroundZ(float angle) {
+    *this = C44Matrix::RotationAroundZ(angle) * *this;
+}
+
 C44Matrix operator*(const C44Matrix& l, float a) {
     float a0 = l.a0 * a;
     float a1 = l.a1 * a;

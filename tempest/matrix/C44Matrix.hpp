@@ -46,6 +46,7 @@ class C44Matrix {
     C44Matrix Adjoint() const;
     float Determinant() const;
     C44Matrix Inverse(float det) const;
+    void RotateAroundZ(float angle);
 };
 
 C44Matrix operator*(const C44Matrix& l, float a);
