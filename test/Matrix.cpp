@@ -1,6 +1,48 @@
 #include "tempest/Matrix.hpp"
 #include "test/Test.hpp"
 
+TEST_CASE("C44Matrix::RotationAroundZ", "[matrix]") {
+    SECTION("returns rotation matrix for 0 degree angle") {
+        auto rotation = C44Matrix::RotationAroundZ(0.0f);
+        CHECK(rotation.a0 == 1.0f);
+        CHECK(rotation.a1 == 0.0f);
+        CHECK(rotation.a2 == 0.0f);
+        CHECK(rotation.a3 == 0.0f);
+        CHECK(rotation.b0 == 0.0f);
+        CHECK(rotation.b1 == 1.0f);
+        CHECK(rotation.b2 == 0.0f);
+        CHECK(rotation.b3 == 0.0f);
+        CHECK(rotation.c0 == 0.0f);
+        CHECK(rotation.c1 == 0.0f);
+        CHECK(rotation.c2 == 1.0f);
+        CHECK(rotation.c3 == 0.0f);
+        CHECK(rotation.d0 == 0.0f);
+        CHECK(rotation.d1 == 0.0f);
+        CHECK(rotation.d2 == 0.0f);
+        CHECK(rotation.d3 == 1.0f);
+    }
+
+    SECTION("returns rotation matrix for 180 degree angle") {
+        auto rotation = C44Matrix::RotationAroundZ(3.1415927f);
+        CHECK(rotation.a0 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(rotation.a1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(rotation.a2 == 0.0f);
+        CHECK(rotation.a3 == 0.0f);
+        CHECK(rotation.b0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(rotation.b1 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(rotation.b2 == 0.0f);
+        CHECK(rotation.b3 == 0.0f);
+        CHECK(rotation.c0 == 0.0f);
+        CHECK(rotation.c1 == 0.0f);
+        CHECK(rotation.c2 == 1.0f);
+        CHECK(rotation.c3 == 0.0f);
+        CHECK(rotation.d0 == 0.0f);
+        CHECK(rotation.d1 == 0.0f);
+        CHECK(rotation.d2 == 0.0f);
+        CHECK(rotation.d3 == 1.0f);
+    }
+}
+
 TEST_CASE("C44Matrix", "[matrix]") {
     SECTION("constructs with default constructor") {
         C44Matrix matrix;

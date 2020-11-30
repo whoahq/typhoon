@@ -1,4 +1,32 @@
 #include "tempest/matrix/C44Matrix.hpp"
+#include <cmath>
+
+C44Matrix C44Matrix::RotationAroundZ(float angle) {
+    float cosAngle = cos(angle);
+    float sinAngle = sin(angle);
+
+    float a0 = cosAngle;
+    float a1 = sinAngle;
+    float a2 = 0.0f;
+    float a3 = 0.0f;
+
+    float b0 = -sinAngle;
+    float b1 = cosAngle;
+    float b2 = 0.0f;
+    float b3 = 0.0f;
+
+    float c0 = 0.0f;
+    float c1 = 0.0f;
+    float c2 = 1.0f;
+    float c3 = 0.0f;
+
+    float d0 = 0.0f;
+    float d1 = 0.0f;
+    float d2 = 0.0f;
+    float d3 = 1.0f;
+
+    return { a0, a1, a2, a3, b0, b1, b2, b3, c0, c1, c2, c3, d0, d1, d2, d3 };
+}
 
 C44Matrix C44Matrix::Adjoint() const {
     float a0 = this->b2 * this->c3 * this->d1 + this->b3 * this->c1 * this->d2 + this->b1 * this->c2 * this->d3 - this->b3 * this->c2 * this->d1 - this->b2 * this->c1 * this->d3 - this->b1 * this->c3 * this->d2;
