@@ -50,4 +50,6 @@ class C44Matrix {
 
 C44Matrix operator*(const C44Matrix& l, float a);
 
+C44Matrix operator*(const C44Matrix& l, const C44Matrix& r);
+
 #endif

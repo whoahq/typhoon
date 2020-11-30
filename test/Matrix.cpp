@@ -256,4 +256,26 @@ TEST_CASE("C44Matrix global operators", "[matrix]") {
         CHECK(matrix2.d2 == 30.0f);
         CHECK(matrix2.d3 == 32.0f);
     }
+
+    SECTION("C44Matrix * C44Matrix") {
+        auto matrix1 = C44Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
+        auto matrix2 = C44Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f, 13.0f, 14.0f, 15.0f, 16.0f);
+        auto matrix3 = matrix1 * matrix2;
+        CHECK(matrix3.a0 == 90.0f);
+        CHECK(matrix3.a1 == 100.0f);
+        CHECK(matrix3.a2 == 110.0f);
+        CHECK(matrix3.a3 == 120.0f);
+        CHECK(matrix3.b0 == 202.0f);
+        CHECK(matrix3.b1 == 228.0f);
+        CHECK(matrix3.b2 == 254.0f);
+        CHECK(matrix3.b3 == 280.0f);
+        CHECK(matrix3.c0 == 314.0f);
+        CHECK(matrix3.c1 == 356.0f);
+        CHECK(matrix3.c2 == 398.0f);
+        CHECK(matrix3.c3 == 440.0f);
+        CHECK(matrix3.d0 == 426.0f);
+        CHECK(matrix3.d1 == 484.0f);
+        CHECK(matrix3.d2 == 542.0f);
+        CHECK(matrix3.d3 == 600.0f);
+    }
 }
