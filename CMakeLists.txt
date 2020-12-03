@@ -37,6 +37,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     add_definitions(-DWHOA_PLATFORM_MAC)
 endif()
 
+add_subdirectory(lib)
 add_subdirectory(tempest)
 add_subdirectory(test)
 add_subdirectory(vendor)
