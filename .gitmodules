@@ -1,4 +1,4 @@
-[submodule "vendor/squall"]
+[submodule "lib/squall"]
 	path = lib/squall
 	url = https://github.com/whoahq/squall
 [submodule "lib/system"]
