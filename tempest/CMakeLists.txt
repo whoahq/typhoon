@@ -14,6 +14,6 @@ target_include_directories(tempest
 )
 
 target_link_libraries(tempest
-    PRIVATE
+    PUBLIC
         storm
 )
