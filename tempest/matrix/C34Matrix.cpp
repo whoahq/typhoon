@@ -64,15 +64,15 @@ C34Matrix operator-(const C34Matrix& l, const C34Matrix& r) {
 C34Matrix operator*(const C34Matrix& l, const C34Matrix& r) {
     float a0 = l.a0 * r.a0 + l.a1 * r.b0 + l.a2 * r.c0;
     float a1 = l.a0 * r.a1 + l.a1 * r.b1 + l.a2 * r.c1;
-    float a2 = l.a0 * r.a2 + l.a1 * r.b2 + l.a2 * r.c3;
+    float a2 = l.a0 * r.a2 + l.a1 * r.b2 + l.a2 * r.c2;
 
     float b0 = l.b0 * r.a0 + l.b1 * r.b0 + l.b2 * r.c0;
     float b1 = l.b0 * r.a1 + l.b1 * r.b1 + l.b2 * r.c1;
     float b2 = l.b0 * r.a2 + l.b1 * r.b2 + l.b2 * r.c2;
 
     float c0 = l.c0 * r.a0 + l.c1 * r.b0 + l.c2 * r.c0;
-    float c0 = l.c0 * r.a1 + l.c1 * r.b1 + l.c2 * r.c1;
-    float c0 = l.c0 * r.a2 + l.c1 * r.b2 + l.c2 * r.c2;
+    float c1 = l.c0 * r.a1 + l.c1 * r.b1 + l.c2 * r.c1;
+    float c2 = l.c0 * r.a2 + l.c1 * r.b2 + l.c2 * r.c2;
 
     float d0 = l.d0 * r.a0 + l.d1 * r.b0 + l.d2 * r.c0 + r.d0;
     float d1 = l.d0 * r.a1 + l.d1 * r.b1 + l.d2 * r.c1 + r.d1;

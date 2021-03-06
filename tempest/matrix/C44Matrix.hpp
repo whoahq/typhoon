@@ -1,7 +1,7 @@
+#include "tempest/vector/C4Vector.hpp"
+
 #ifndef TEMPEST_MATRIX_C_44MATRIX_HPP
 #define TEMPEST_MATRIX_C_44MATRIX_HPP
-
-#include "tempest/vector/C4Vector.hpp"
 
 class C44Matrix {
     public:

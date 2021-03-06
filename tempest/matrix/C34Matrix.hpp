@@ -1,7 +1,7 @@
+#include "tempest/vector/C3Vector.hpp"
+
 #ifndef TEMPEST_MATRIX_C_34MATRIX_HPP
 #define TEMPEST_MATRIX_C_34MATRIX_HPP
-
-#include "tempest/vector/C3Vector.hpp"
 
 class C34Matrix {
     public:
