@@ -62,23 +62,21 @@ C34Matrix operator-(const C34Matrix& l, const C34Matrix& r) {
 }
 
 C34Matrix operator*(const C34Matrix& l, const C34Matrix& r) {
+    float a0 = l.a0 * r.a0 + l.a1 * r.b0 + l.a2 * r.c0;
+    float a1 = l.a0 * r.a1 + l.a1 * r.b1 + l.a2 * r.c1;
+    float a2 = l.a0 * r.a2 + l.a1 * r.b2 + l.a2 * r.c3;
 
-    float a0 = (l.a0 * r.a0 + l.a2 * r.c0) + (l.a1 * r.b0);
+    float b0 = l.b0 * r.a0 + l.b1 * r.b0 + l.b2 * r.c0;
+    float b1 = l.b0 * r.a1 + l.b1 * r.b1 + l.b2 * r.c1;
+    float b2 = l.b0 * r.a2 + l.b1 * r.b2 + l.b2 * r.c2;
 
-    float a1 = l.a2 * r.c1 + l.a1 * r.b1 + r.a1 * l.a0;
-    float a2 = l.a1 * r.b2 + l.a2 * r.c2 + l.a0 * r.a2;
+    float c0 = l.c0 * r.a0 + l.c1 * r.b0 + l.c2 * r.c0;
+    float c0 = l.c0 * r.a1 + l.c1 * r.b1 + l.c2 * r.c1;
+    float c0 = l.c0 * r.a2 + l.c1 * r.b2 + l.c2 * r.c2;
 
-    float b0 = r.c0 * l.b2 + r.b0 * l.b1 + l.b0 * r.a0;
-    float b1 = l.b0 * r.a1 + l.b2 * r.c1 + l.b1 * r.b1;
-    float b2 = r.c2 * l.b2 + l.b0 * r.a2 + l.b1 * r.b2;
-
-    float c0 = l.c0 * r.a0 + r.c0 * l.c2 + r.b0 * l.c1;
-    float c1 = l.c2 * r.c1 + l.c1 * r.b1 + l.c0 * r.a1;
-    float c2 = l.c2 * r.c2 + l.c0 * r.a2 + l.c1 * r.b2;
-
-    float d0 = r.c0 * l.d2 + l.d1 * r.b0 + l.d0 * r.a0 + r.d0;
-    float d1 = l.d1 * r.b1 + l.d0 * r.a1 + l.d2 * r.c1 + r.d1;
-    float d2 = l.d1 * r.b2 + l.d0 * r.a2 + r.c2 * l.d2 + r.d2;
+    float d0 = l.d0 * r.a0 + l.d1 * r.b0 + l.d2 * r.c0 + r.d0;
+    float d1 = l.d0 * r.a1 + l.d1 * r.b1 + l.d2 * r.c1 + r.d1;
+    float d2 = l.d0 * r.a2 + l.d1 * r.b2 + l.d2 * r.c2 + r.d2;
 
     return { a0, a1, a2, b0, b1, b2, c0, c1, c2, d0, d1, d2 };
 }
