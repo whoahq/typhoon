@@ -10,6 +10,7 @@ class C4Vector {
     float w = 0.0f;
 
     // Member functions
+    C4Vector() = default;
     C4Vector(float x, float y, float z, float w)
         : x(x)
         , y(y)
