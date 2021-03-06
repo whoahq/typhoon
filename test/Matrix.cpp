@@ -1,6 +1,48 @@
 #include "tempest/Matrix.hpp"
 #include "test/Test.hpp"
 
+TEST_CASE("C33Matrix", "[matrix]") {
+    SECTION("constructs with default constructor") {
+        C33Matrix matrix;
+        CHECK(matrix.a0 == 0.0f);
+        CHECK(matrix.a1 == 0.0f);
+        CHECK(matrix.a2 == 0.0f);
+        CHECK(matrix.b0 == 0.0f);
+        CHECK(matrix.b1 == 0.0f);
+        CHECK(matrix.b2 == 0.0f);
+        CHECK(matrix.c0 == 0.0f);
+        CHECK(matrix.c1 == 0.0f);
+        CHECK(matrix.c2 == 0.0f);
+    }
+
+    SECTION("constructs with element constructor") {
+        C33Matrix mat = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        CHECK(mat.a0 == 1);
+        CHECK(mat.a1 == 2);
+        CHECK(mat.a2 == 3);
+        CHECK(mat.b0 == 4);
+        CHECK(mat.b1 == 5);
+        CHECK(mat.b2 == 6);
+        CHECK(mat.c0 == 7);
+        CHECK(mat.c1 == 8);
+        CHECK(mat.c2 == 9);
+    }
+
+    SECTION("multiplication") {
+        C33Matrix mat = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        C33Matrix result = mat * 10;
+        CHECK(result.a0 == 10);
+        CHECK(result.a1 == 20);
+        CHECK(result.a2 == 30);
+        CHECK(result.b0 == 40);
+        CHECK(result.b1 == 50);
+        CHECK(result.b2 == 60);
+        CHECK(result.c0 == 70);
+        CHECK(result.c1 == 80);
+        CHECK(result.c2 == 90);
+    }
+}
+
 TEST_CASE("C44Matrix::RotationAroundZ", "[matrix]") {
     SECTION("returns rotation matrix for 0 degree angle") {
         auto rotation = C44Matrix::RotationAroundZ(0.0f);
@@ -302,3 +344,4 @@ TEST_CASE("C44Matrix global operators", "[matrix]") {
         CHECK(matrix3.d3 == 600.0f);
     }
 }
+
