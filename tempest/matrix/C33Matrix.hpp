@@ -6,15 +6,15 @@
 class C33Matrix {
     public:
     // Member variables
-    float a0 = 0.0f;
+    float a0 = 1.0f;
     float a1 = 0.0f;
     float a2 = 0.0f;
     float b0 = 0.0f;
-    float b1 = 0.0f;
+    float b1 = 1.0f;
     float b2 = 0.0f;
     float c0 = 0.0f;
     float c1 = 0.0f;
-    float c2 = 0.0f;
+    float c2 = 1.0f;
 
     // Member functions
     C33Matrix() = default;
