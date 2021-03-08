@@ -1,7 +1,7 @@
-#include "tempest/vector/C3Vector.hpp"
-
 #ifndef TEMPEST_MATRIX_C_33MATRIX_HPP
 #define TEMPEST_MATRIX_C_33MATRIX_HPP
+
+#include "tempest/vector/C3Vector.hpp"
 
 class C33Matrix {
     public:
@@ -38,5 +38,6 @@ C33Matrix operator/(const C33Matrix& l, float a);
 
 C33Matrix operator*(const C33Matrix& l, const C33Matrix& r);
 
-C3Vector operator*(const C33Matrix& mat, const C3Vector& v);
+C3Vector operator*(const C33Matrix& l, const C3Vector& r);
+
 #endif

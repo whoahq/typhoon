@@ -1,7 +1,7 @@
-#include "tempest/vector/C4Vector.hpp"
-
 #ifndef TEMPEST_MATRIX_C_44MATRIX_HPP
 #define TEMPEST_MATRIX_C_44MATRIX_HPP
+
+#include "tempest/vector/C4Vector.hpp"
 
 class C44Matrix {
     public:
@@ -55,6 +55,6 @@ C44Matrix operator*(const C44Matrix& l, float a);
 
 C44Matrix operator*(const C44Matrix& l, const C44Matrix& r);
 
-C4Vector operator*(const C4Vector& v, const C44Matrix& r);
+C4Vector operator*(const C4Vector& l, const C44Matrix& r);
 
 #endif

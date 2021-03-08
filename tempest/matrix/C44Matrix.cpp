@@ -112,10 +112,10 @@ C44Matrix operator*(const C44Matrix& l, const C44Matrix& r) {
     return { a0, a1, a2, a3, b0, b1, b2, b3, c0, c1, c2, c3, d0, d1, d2, d3 };
 }
 
-C4Vector operator*(const C4Vector& v, C44Matrix& r) {
-	float x = v.x * r.a0 + v.y * r.b0 + v.z * r.c0 + v.w * r.d0; 
-	float y = v.x * r.a1 + v.y * r.b1 + v.z * r.c1 + v.w * r.d1; 
-	float z = v.x * r.a2 + v.y * r.b2 + v.z * r.c2 + v.w * r.d2; 
-	float w = v.x * r.a3 + v.y * r.b3 + v.z * r.c3 + v.w * r.d3; 
+C4Vector operator*(const C44Matrix& l, const C4Vector& r) {
+    float x = r.x * l.a0 + r.y * l.b0 + r.z * l.c0 + r.w * l.d0;
+    float y = r.x * l.a1 + r.y * l.b1 + r.z * l.c1 + r.w * l.d1;
+    float z = r.x * l.a2 + r.y * l.b2 + r.z * l.c2 + r.w * l.d2;
+    float w = r.x * l.a3 + r.y * l.b3 + r.z * l.c3 + r.w * l.d3;
     return { x, y, z, w };
 }

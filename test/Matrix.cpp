@@ -344,4 +344,3 @@ TEST_CASE("C44Matrix global operators", "[matrix]") {
         CHECK(matrix3.d3 == 600.0f);
     }
 }
-

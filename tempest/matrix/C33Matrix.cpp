@@ -1,7 +1,5 @@
 #include "tempest/matrix/C33Matrix.hpp"
 
-// Member functions
-
 C33Matrix C33Matrix::Adjoint() const {
     float a0 = (this->c2 * this->b1) - (this->b2 * this->c1);
     float a1 = -(this->a1 * this->c2 - this->a2 * this->c1);
@@ -60,9 +58,9 @@ C33Matrix operator*(const C33Matrix& l, float a) {
     return { a0, a1, a2, b0, b1, b2, c0, c1, c2 };
 }
 
-C3Vector operator*(const C33Matrix& mat, const C3Vector& v) {
-    float x = mat.a0 * v.x + mat.a1 * v.y + mat.a2 * v.z;
-    float y = mat.b0 * v.x + mat.b1 * v.y + mat.b2 * v.z;
-    float z = mat.c0 * v.x + mat.c1 * v.y + mat.c2 * v.z;
+C3Vector operator*(const C33Matrix& l, const C3Vector& r) {
+    float x = l.a0 * r.x + l.a1 * r.y + l.a2 * r.z;
+    float y = l.b0 * r.x + l.b1 * r.y + l.b2 * r.z;
+    float z = l.c0 * r.x + l.c1 * r.y + l.c2 * r.z;
     return { x, y, z };
 }

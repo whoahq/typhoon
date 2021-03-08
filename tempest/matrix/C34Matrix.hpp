@@ -1,7 +1,7 @@
-#include "tempest/vector/C3Vector.hpp"
-
 #ifndef TEMPEST_MATRIX_C_34MATRIX_HPP
 #define TEMPEST_MATRIX_C_34MATRIX_HPP
+
+#include "tempest/vector/C3Vector.hpp"
 
 class C34Matrix {
     public:
@@ -18,6 +18,7 @@ class C34Matrix {
     float d0 = 0.0f;
     float d1 = 0.0f;
     float d2 = 0.0f;
+
     // Member functions
     C34Matrix() = default;
     C34Matrix(float a0, float a1, float a2, float b0, float b1, float b2, float c0, float c1, float c2, float d0, float d1, float d2)
@@ -40,10 +41,13 @@ class C34Matrix {
 };
 
 C34Matrix operator+(const C34Matrix& l, const C34Matrix& r);
+
 C34Matrix operator-(const C34Matrix& l, const C34Matrix& r);
+
 C34Matrix operator*(const C34Matrix& l, const C34Matrix& r);
 
 C34Matrix operator*(const C34Matrix& l, const float& a);
 
-C3Vector operator*(const C34Matrix& mat, const C3Vector& v);
+C3Vector operator*(const C34Matrix& l, const C3Vector& r);
+
 #endif
