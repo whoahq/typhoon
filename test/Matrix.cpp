@@ -4,15 +4,15 @@
 TEST_CASE("C33Matrix", "[matrix]") {
     SECTION("constructs with default constructor") {
         C33Matrix matrix;
-        CHECK(matrix.a0 == 0.0f);
+        CHECK(matrix.a0 == 1.0f);
         CHECK(matrix.a1 == 0.0f);
         CHECK(matrix.a2 == 0.0f);
         CHECK(matrix.b0 == 0.0f);
-        CHECK(matrix.b1 == 0.0f);
+        CHECK(matrix.b1 == 1.0f);
         CHECK(matrix.b2 == 0.0f);
         CHECK(matrix.c0 == 0.0f);
         CHECK(matrix.c1 == 0.0f);
-        CHECK(matrix.c2 == 0.0f);
+        CHECK(matrix.c2 == 1.0f);
     }
 
     SECTION("constructs with element constructor") {
@@ -27,8 +27,10 @@ TEST_CASE("C33Matrix", "[matrix]") {
         CHECK(mat.c1 == 8);
         CHECK(mat.c2 == 9);
     }
+}
 
-    SECTION("multiplication") {
+TEST_CASE("C33Matrix global operators", "[matrix]") {
+    SECTION("C33Matrix * float") {
         C33Matrix mat = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         C33Matrix result = mat * 10;
         CHECK(result.a0 == 10);
@@ -40,6 +42,20 @@ TEST_CASE("C33Matrix", "[matrix]") {
         CHECK(result.c0 == 70);
         CHECK(result.c1 == 80);
         CHECK(result.c2 == 90);
+    }
+
+    SECTION("C33Matrix / float") {
+        C33Matrix mat = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+        C33Matrix result = mat / 10;
+        CHECK(result.a0 == 1);
+        CHECK(result.a1 == 2);
+        CHECK(result.a2 == 3);
+        CHECK(result.b0 == 4);
+        CHECK(result.b1 == 5);
+        CHECK(result.b2 == 6);
+        CHECK(result.c0 == 7);
+        CHECK(result.c1 == 8);
+        CHECK(result.c2 == 9);
     }
 }
 
