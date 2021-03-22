@@ -16,6 +16,10 @@ C33Matrix C33Matrix::Adjoint() const {
     return { a0, a1, a2, b0, b1, b2, c0, c1, c2 };
 }
 
+float C33Matrix::Determinant() const {
+    return this->a0 * this->b1 * this->c2 + this->a1 * this->b2 * this->c0 + this->a2 * this->b0 * this->c1 - this->a0 * this->b2 * this->c1 - this->a1 * this->b0 * this->c2 - this->a2 * this->b1 * this->c0;
+}
+
 C33Matrix C33Matrix::Inverse(float det) const {
     return this->Adjoint() / det;
 }

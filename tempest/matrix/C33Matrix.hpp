@@ -29,6 +29,7 @@ class C33Matrix {
         , c1(c1)
         , c2(c2) {};
     C33Matrix Adjoint() const;
+    float Determinant() const;
     C33Matrix Inverse(float det) const;
 };
 
