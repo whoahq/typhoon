@@ -21,6 +21,7 @@ class C3Vector {
 };
 
 C3Vector operator+(const C3Vector& l, const C3Vector& r);
+C3Vector operator-(const C3Vector& l, const C3Vector& r);
 
 bool operator!=(const C3Vector& l, const C3Vector& r);
 

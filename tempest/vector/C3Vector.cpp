@@ -29,6 +29,14 @@ C3Vector operator+(const C3Vector& l, const C3Vector& r) {
     return { x, y, z };
 }
 
+C3Vector operator-(const C3Vector& l, const C3Vector& r) {
+    float x = l.x - r.x;
+    float y = l.y - r.y;
+    float z = l.z - r.z;
+
+    return { x, y, z };
+}
+
 bool operator!=(const C3Vector& l, const C3Vector& r) {
     return l.x != r.x || l.y != r.y || l.z != r.z;
 }
