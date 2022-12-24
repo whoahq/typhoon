@@ -2,6 +2,7 @@
 #define TEMPEST_MATRIX_C_44MATRIX_HPP
 
 class C3Vector;
+class C4Quaternion;
 
 class C44Matrix {
     public:
@@ -45,6 +46,7 @@ class C44Matrix {
         , d1(d1)
         , d2(d2)
         , d3(d3) {};
+    C44Matrix(const C4Quaternion& rotation);
     C44Matrix Adjoint() const;
     float Determinant() const;
     C44Matrix Inverse(float det) const;

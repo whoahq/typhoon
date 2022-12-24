@@ -1,4 +1,5 @@
 #include "tempest/matrix/C44Matrix.hpp"
+#include "tempest/Quaternion.hpp"
 #include "tempest/Vector.hpp"
 #include <cmath>
 
@@ -27,6 +28,42 @@ C44Matrix C44Matrix::RotationAroundZ(float angle) {
     float d3 = 1.0f;
 
     return { a0, a1, a2, a3, b0, b1, b2, b3, c0, c1, c2, c3, d0, d1, d2, d3 };
+}
+
+C44Matrix::C44Matrix(const C4Quaternion& rotation) {
+    this->a3 = 0.0f;
+    this->b3 = 0.0f;
+    this->c3 = 0.0f;
+
+    this->d0 = 0.0f;
+    this->d1 = 0.0f;
+    this->d2 = 0.0f;
+    this->d3 = 1.0f;
+
+    float v3 = rotation.x * 2.0f;
+    float v4 = rotation.y * 2.0f;
+    float v5 = rotation.z * 2.0f;
+
+    float v6 = rotation.w * v3;
+    float v7 = rotation.w * v4;
+    float v8 = rotation.w * v5;
+
+    float v10 = rotation.x * v3;
+    float v11 = rotation.x * v4;
+    float v19 = rotation.x * v5;
+    float v12 = rotation.y * v4;
+    float v17 = rotation.y * v5;
+    float v16 = rotation.z * v5;
+
+    this->a0 = 1.0f - (v16 + v12);
+    this->a1 = v11 + v8;
+    this->a2 = v19 - v7;
+    this->b0 = v11 - v8;
+    this->b1 = 1.0f - (v16 + v10);
+    this->b2 = v17 + v6;
+    this->c0 = v7 + v19;
+    this->c1 = v17 - v6;
+    this->c2 = 1.0f - (v10 + v12);
 }
 
 C44Matrix C44Matrix::Adjoint() const {
