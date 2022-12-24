@@ -51,6 +51,7 @@ class C44Matrix {
     void RotateAroundZ(float angle);
     void Scale(const C3Vector& scale);
     void Scale(float scale);
+    void Translate(const C3Vector& move);
 };
 
 C44Matrix operator*(const C44Matrix& l, float a);
