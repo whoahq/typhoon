@@ -12,6 +12,7 @@ class C2Vector {
     C2Vector(float x, float y)
         : x(x)
         , y(y) {};
+    bool operator==(const C2Vector& v);
 };
 
 #endif
