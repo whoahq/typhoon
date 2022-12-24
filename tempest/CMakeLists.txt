@@ -1,6 +1,7 @@
 file(GLOB TEMPEST_SOURCES
     "*.cpp"
     "matrix/*.cpp"
+    "quaternion/*.cpp"
     "rect/*.cpp"
     "vector/*.cpp"
 )
