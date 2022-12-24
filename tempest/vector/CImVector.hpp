@@ -20,6 +20,7 @@ class CImVector {
         uint32_t value;
     };
 
+    // Member functions
     bool operator==(const CImVector& color);
     void Set(float a, float r, float g, float b);
 };
