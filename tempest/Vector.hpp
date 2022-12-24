@@ -5,5 +5,6 @@
 #include "tempest/vector/C2iVector.hpp"
 #include "tempest/vector/C3Vector.hpp"
 #include "tempest/vector/C4Vector.hpp"
+#include "tempest/vector/CImVector.hpp"
 
 #endif
