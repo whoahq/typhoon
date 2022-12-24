@@ -1,6 +1,8 @@
 #ifndef TEMPEST_VECTOR_C_3VECTOR_HPP
 #define TEMPEST_VECTOR_C_3VECTOR_HPP
 
+class C44Matrix;
+
 class C3Vector {
     public:
     // Member variables
@@ -21,6 +23,8 @@ class C3Vector {
 };
 
 C3Vector operator+(const C3Vector& l, const C3Vector& r);
+
+C3Vector operator*(const C3Vector& l, const C44Matrix& r);
 
 bool operator!=(const C3Vector& l, const C3Vector& r);
 
