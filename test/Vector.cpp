@@ -15,6 +15,22 @@ TEST_CASE("C2Vector", "[vector]") {
     }
 }
 
+TEST_CASE("C2Vector::operator==", "[vector]") {
+    SECTION("returns true when compared to identical vector") {
+        auto vector1 = C2Vector(1.0f, 2.0f);
+        auto vector2 = C2Vector(1.0f, 2.0f);
+        auto identical = vector1 == vector2;
+        REQUIRE(identical);
+    }
+
+    SECTION("returns false when compared to different vector") {
+        auto vector1 = C2Vector(2.0f, 1.0f);
+        auto vector2 = C2Vector(1.0f, 2.0f);
+        auto identical = vector1 == vector2;
+        REQUIRE(!identical);
+    }
+}
+
 TEST_CASE("C3Vector", "[vector]") {
     SECTION("constructs with default constructor") {
         C3Vector vector;
