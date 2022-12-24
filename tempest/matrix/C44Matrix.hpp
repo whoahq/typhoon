@@ -1,6 +1,8 @@
 #ifndef TEMPEST_MATRIX_C_44MATRIX_HPP
 #define TEMPEST_MATRIX_C_44MATRIX_HPP
 
+class C3Vector;
+
 class C44Matrix {
     public:
     // Static functions
@@ -47,6 +49,7 @@ class C44Matrix {
     float Determinant() const;
     C44Matrix Inverse(float det) const;
     void RotateAroundZ(float angle);
+    void Scale(const C3Vector& scale);
 };
 
 C44Matrix operator*(const C44Matrix& l, float a);

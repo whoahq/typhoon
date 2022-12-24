@@ -1,4 +1,5 @@
 #include "tempest/matrix/C44Matrix.hpp"
+#include "tempest/Vector.hpp"
 #include <cmath>
 
 C44Matrix C44Matrix::RotationAroundZ(float angle) {
@@ -62,6 +63,20 @@ C44Matrix C44Matrix::Inverse(float det) const {
 
 void C44Matrix::RotateAroundZ(float angle) {
     *this = C44Matrix::RotationAroundZ(angle) * *this;
+}
+
+void C44Matrix::Scale(const C3Vector& scale) {
+    this->a0 *= scale.x;
+    this->a1 *= scale.x;
+    this->a2 *= scale.x;
+
+    this->b0 *= scale.y;
+    this->b1 *= scale.y;
+    this->b2 *= scale.y;
+
+    this->c0 *= scale.z;
+    this->c1 *= scale.z;
+    this->c2 *= scale.z;
 }
 
 C44Matrix operator*(const C44Matrix& l, float a) {
