@@ -99,6 +99,30 @@ void C44Matrix::Translate(const C3Vector& move) {
     this->d2 = this->a2 * move.x + this->b2 * move.y + this->c2 * move.z + this->d2;
 }
 
+C44Matrix C44Matrix::Transpose() const {
+    float a0 = this->a0;
+    float a1 = this->a1;
+    float a2 = this->a2;
+    float a3 = this->a3;
+
+    float b0 = this->b0;
+    float b1 = this->b1;
+    float b2 = this->b2;
+    float b3 = this->b3;
+
+    float c0 = this->c0;
+    float c1 = this->c1;
+    float c2 = this->c2;
+    float c3 = this->c3;
+
+    float d0 = this->d0;
+    float d1 = this->d1;
+    float d2 = this->d2;
+    float d3 = this->d3;
+
+    return { a0, b0, c0, d0, a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3 };
+}
+
 C44Matrix operator*(const C44Matrix& l, float a) {
     float a0 = l.a0 * a;
     float a1 = l.a1 * a;
