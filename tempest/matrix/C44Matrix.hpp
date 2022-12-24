@@ -50,6 +50,7 @@ class C44Matrix {
     C44Matrix Inverse(float det) const;
     void RotateAroundZ(float angle);
     void Scale(const C3Vector& scale);
+    void Scale(float scale);
 };
 
 C44Matrix operator*(const C44Matrix& l, float a);

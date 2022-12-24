@@ -79,6 +79,20 @@ void C44Matrix::Scale(const C3Vector& scale) {
     this->c2 *= scale.z;
 }
 
+void C44Matrix::Scale(float scale) {
+    this->a0 *= scale;
+    this->a1 *= scale;
+    this->a2 *= scale;
+
+    this->b0 *= scale;
+    this->b1 *= scale;
+    this->b2 *= scale;
+
+    this->c0 *= scale;
+    this->c1 *= scale;
+    this->c2 *= scale;
+}
+
 C44Matrix operator*(const C44Matrix& l, float a) {
     float a0 = l.a0 * a;
     float a1 = l.a1 * a;
