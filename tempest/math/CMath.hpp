@@ -29,6 +29,10 @@ class CMath {
         return static_cast<uint32_t>(n + 0.5f);
     }
 
+    static uint32_t fuint_pi(float n) {
+        return static_cast<uint32_t>(n + 0.99994999);
+    }
+
     static float sqrt(float x) {
         STORM_ASSERT(x >= 0.0f);
         return ::sqrt(x);
