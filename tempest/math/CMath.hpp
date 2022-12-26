@@ -13,6 +13,10 @@ class CMath {
     static constexpr float OO_TWO_PI = 1.0f / TWO_PI;
 
     // Static functions
+    static int32_t fint(float n) {
+        return static_cast<int32_t>(n);
+    }
+
     static uint32_t fuint(float n) {
         return static_cast<uint32_t>(n);
     }
