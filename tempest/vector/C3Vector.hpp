@@ -1,6 +1,8 @@
 #ifndef TEMPEST_VECTOR_C_3VECTOR_HPP
 #define TEMPEST_VECTOR_C_3VECTOR_HPP
 
+#include "tempest/vector/CImVector.hpp"
+
 class C44Matrix;
 
 class C3Vector {
@@ -16,6 +18,10 @@ class C3Vector {
         : x(x)
         , y(y)
         , z(z) {};
+    C3Vector(const CImVector& color)
+        : x(color.r / 255.0f)
+        , y(color.g / 255.0f)
+        , z(color.b / 255.0f) {};
     C3Vector& operator*=(float a);
     float Mag() const;
     void Normalize();
