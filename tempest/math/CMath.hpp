@@ -17,6 +17,10 @@ class CMath {
         return static_cast<int32_t>(n);
     }
 
+    static int32_t fint_n(float n) {
+        return n <= 0.0f ? static_cast<int32_t>(n - 0.5f) : static_cast<int32_t>(n + 0.5f);
+    }
+
     static uint32_t fuint(float n) {
         return static_cast<uint32_t>(n);
     }
