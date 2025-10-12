@@ -94,6 +94,28 @@ float C44Matrix::Determinant() const {
     return (this->b1 * this->c2 * this->d3 + this->c3 * this->b2 * this->d1 + this->b3 * this->c1 * this->d2 - this->c2 * this->b3 * this->d1 - this->d3 * (this->c1 * this->b2) - this->b1 * this->c3 * this->d2) * this->a0 - (this->c2 * this->b0 * this->d3 + this->c3 * this->b2 * this->d0 + this->b3 * this->c0 * this->d2 - this->b3 * this->c2 * this->d0 - this->d3 * (this->c0 * this->b2) - this->b0 * this->c3 * this->d2) * this->a1 + (this->c1 * this->b0 * this->d3 + this->c3 * this->b1 * this->d0 + this->b3 * this->c0 * this->d1 - this->b3 * this->c1 * this->d0 - this->d3 * (this->c0 * this->b1) - this->b0 * this->c3 * this->d1) * this->a2 - (this->c1 * this->b0 * this->d2 + this->c2 * this->b1 * this->d0 + this->b2 * this->c0 * this->d1 - this->b2 * this->c1 * this->d0 - this->d2 * (this->c0 * this->b1) - this->b0 * this->c2 * this->d1) * this->a3;
 }
 
+void C44Matrix::Identity() {
+    this->a0 = 1.0f;
+    this->a1 = 0.0f;
+    this->a2 = 0.0f;
+    this->a3 = 0.0f;
+
+    this->b0 = 0.0f;
+    this->b1 = 1.0f;
+    this->b2 = 0.0f;
+    this->b3 = 0.0f;
+
+    this->c0 = 0.0f;
+    this->c1 = 0.0f;
+    this->c2 = 1.0f;
+    this->c3 = 0.0f;
+
+    this->d0 = 0.0f;
+    this->d1 = 0.0f;
+    this->d2 = 0.0f;
+    this->d3 = 1.0f;
+}
+
 C44Matrix C44Matrix::Inverse(float det) const {
     return this->Adjoint() * (1.0f / det);
 }

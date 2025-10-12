@@ -49,6 +49,7 @@ class C44Matrix {
     C44Matrix(const C4Quaternion& rotation);
     C44Matrix Adjoint() const;
     float Determinant() const;
+    void Identity();
     C44Matrix Inverse(float det) const;
     void RotateAroundZ(float angle);
     void Scale(const C3Vector& scale);
