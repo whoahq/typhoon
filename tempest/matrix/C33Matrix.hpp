@@ -1,6 +1,8 @@
 #ifndef TEMPEST_MATRIX_C_33MATRIX_HPP
 #define TEMPEST_MATRIX_C_33MATRIX_HPP
 
+#include "tempest/matrix/C44Matrix.hpp"
+
 class C33Matrix {
     public:
     // Member variables
@@ -26,6 +28,16 @@ class C33Matrix {
     , c0(c0)
     , c1(c1)
     , c2(c2) {}
+    C33Matrix(C44Matrix& m)
+    : a0(m.a0)
+    , a1(m.a1)
+    , a2(m.a2)
+    , b0(m.b0)
+    , b1(m.b1)
+    , b2(m.b2)
+    , c0(m.c0)
+    , c1(m.c1)
+    , c2(m.c2) {}
 };
 
 #endif
