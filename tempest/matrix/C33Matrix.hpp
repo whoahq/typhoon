@@ -38,6 +38,7 @@ class C33Matrix {
     , c0(m.c0)
     , c1(m.c1)
     , c2(m.c2) {}
+    C33Matrix Transpose() const;
 };
 
 #endif
