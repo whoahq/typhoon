@@ -45,8 +45,8 @@ C33Matrix::C33Matrix(const C44Matrix& m) {
 
 C33Matrix C33Matrix::Transpose() const {
     return {
-        a0, b0, c0,
-        a1, b1, c1,
-        a2, b2, c2
+        this->a0, this->b0, this->c0,
+        this->a1, this->b1, this->c1,
+        this->a2, this->b2, this->c2
     };
 }
