@@ -34,6 +34,7 @@ class C44Matrix {
     C44Matrix(const C33Matrix& m);
     C44Matrix(const C4Quaternion& rotation);
     C44Matrix Adjoint() const;
+    C44Matrix AffineInverse() const;
     float Determinant() const;
     void Identity();
     C44Matrix Inverse(float det) const;
