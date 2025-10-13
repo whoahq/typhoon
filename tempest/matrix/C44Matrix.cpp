@@ -158,6 +158,12 @@ C44Matrix C44Matrix::Adjoint() const {
     return { a0, a1, a2, a3, b0, b1, b2, b3, c0, c1, c2, c3, d0, d1, d2, d3 };
 }
 
+/**
+ * Calculate and return the inverse of this affine transform matrix. This function assumes no
+ * scaling factor is present in the transform.
+ *
+ * @return Inverse of matrix
+ */
 C44Matrix C44Matrix::AffineInverse() const {
     auto matrix = C44Matrix(C33Matrix(*this).Transpose());
     matrix.Translate(C3Vector(-this->d0, -this->d1, -this->d2));
@@ -165,11 +171,20 @@ C44Matrix C44Matrix::AffineInverse() const {
     return matrix;
 }
 
+/**
+ * Calculate and return the inverse of this affine transform matrix. This function assumes a
+ * uniform scaling factor may be present in the transform.
+ *
+ * @param uniformScale Uniform scaling factor
+ * @return Inverse of matrix
+ */
 C44Matrix C44Matrix::AffineInverse(float uniformScale) const {
+    // No scaling factor present
     if (CMath::fequal(uniformScale, 1.0f)) {
         return this->AffineInverse();
     }
 
+    // Uniform scaling factor present
     auto matrix = C44Matrix(C33Matrix(*this).Transpose());
     matrix.Scale(1.0f / (uniformScale * uniformScale));
     matrix.Translate(C3Vector(-this->d0, -this->d1, -this->d2));
