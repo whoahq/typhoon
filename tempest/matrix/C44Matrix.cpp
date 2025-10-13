@@ -1,4 +1,5 @@
 #include "tempest/matrix/C44Matrix.hpp"
+#include "tempest/matrix/C33Matrix.hpp"
 #include "tempest/Quaternion.hpp"
 #include "tempest/Vector.hpp"
 #include <cmath>
@@ -28,6 +29,72 @@ C44Matrix C44Matrix::RotationAroundZ(float angle) {
     float d3 = 1.0f;
 
     return { a0, a1, a2, a3, b0, b1, b2, b3, c0, c1, c2, c3, d0, d1, d2, d3 };
+}
+
+C44Matrix::C44Matrix() {
+    this->a0 = 1.0f;
+    this->a1 = 0.0f;
+    this->a2 = 0.0f;
+    this->a3 = 0.0f;
+
+    this->b0 = 0.0f;
+    this->b1 = 1.0f;
+    this->b2 = 0.0f;
+    this->b3 = 0.0f;
+
+    this->c0 = 0.0f;
+    this->c1 = 0.0f;
+    this->c2 = 1.0f;
+    this->c3 = 0.0f;
+
+    this->d0 = 0.0f;
+    this->d1 = 0.0f;
+    this->d2 = 0.0f;
+    this->d3 = 1.0f;
+}
+
+C44Matrix::C44Matrix(float a0, float a1, float a2, float a3, float b0, float b1, float b2, float b3, float c0, float c1, float c2, float c3, float d0, float d1, float d2, float d3) {
+    this->a0 = a0;
+    this->a1 = a1;
+    this->a2 = a2;
+    this->a3 = a3;
+
+    this->b0 = b0;
+    this->b1 = b1;
+    this->b2 = b2;
+    this->b3 = b3;
+
+    this->c0 = c0;
+    this->c1 = c1;
+    this->c2 = c2;
+    this->c3 = c3;
+
+    this->d0 = d0;
+    this->d1 = d1;
+    this->d2 = d2;
+    this->d3 = d3;
+}
+
+C44Matrix::C44Matrix(const C33Matrix& m) {
+    this->a0 = m.a0;
+    this->a1 = m.a1;
+    this->a2 = m.a2;
+    this->a3 = 0.0f;
+
+    this->b0 = m.b0;
+    this->b1 = m.b1;
+    this->b2 = m.b2;
+    this->b3 = 0.0f;
+
+    this->c0 = m.c0;
+    this->c1 = m.c1;
+    this->c2 = m.c2;
+    this->c3 = 0.0f;
+
+    this->d0 = 0.0f;
+    this->d1 = 0.0f;
+    this->d2 = 0.0f;
+    this->d3 = 1.0f;
 }
 
 C44Matrix::C44Matrix(const C4Quaternion& rotation) {
