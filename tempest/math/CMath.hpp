@@ -34,6 +34,14 @@ class CMath {
         return n <= 0.0f ? static_cast<int32_t>(n - 0.5f) : static_cast<int32_t>(n + 0.5f);
     }
 
+    static bool fnotequal(float a, float b) {
+        return !CMath::fequal(a, b);
+    }
+
+    static bool fnotequalz(float a, float b, float z) {
+        return !CMath::fequalz(a, b, z);
+    }
+
     static uint32_t fuint(float n) {
         return static_cast<uint32_t>(n);
     }
