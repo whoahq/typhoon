@@ -19,25 +19,25 @@ class C33Matrix {
     // Member functions
     C33Matrix() = default;
     C33Matrix(float a0, float a1, float a2, float b0, float b1, float b2, float c0, float c1, float c2)
-    : a0(a0)
-    , a1(a1)
-    , a2(a2)
-    , b0(b0)
-    , b1(b1)
-    , b2(b2)
-    , c0(c0)
-    , c1(c1)
-    , c2(c2) {}
+        : a0(a0)
+        , a1(a1)
+        , a2(a2)
+        , b0(b0)
+        , b1(b1)
+        , b2(b2)
+        , c0(c0)
+        , c1(c1)
+        , c2(c2) {}
     C33Matrix(const C44Matrix& m)
-    : a0(m.a0)
-    , a1(m.a1)
-    , a2(m.a2)
-    , b0(m.b0)
-    , b1(m.b1)
-    , b2(m.b2)
-    , c0(m.c0)
-    , c1(m.c1)
-    , c2(m.c2) {}
+        : a0(m.a0)
+        , a1(m.a1)
+        , a2(m.a2)
+        , b0(m.b0)
+        , b1(m.b1)
+        , b2(m.b2)
+        , c0(m.c0)
+        , c1(m.c1)
+        , c2(m.c2) {}
     C33Matrix Transpose() const;
 };
 
