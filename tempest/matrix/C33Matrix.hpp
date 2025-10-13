@@ -28,7 +28,7 @@ class C33Matrix {
     , c0(c0)
     , c1(c1)
     , c2(c2) {}
-    C33Matrix(C44Matrix& m)
+    C33Matrix(const C44Matrix& m)
     : a0(m.a0)
     , a1(m.a1)
     , a2(m.a2)
