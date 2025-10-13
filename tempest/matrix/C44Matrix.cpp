@@ -1,7 +1,8 @@
 #include "tempest/matrix/C44Matrix.hpp"
-#include "tempest/matrix/C33Matrix.hpp"
 #include "tempest/Quaternion.hpp"
 #include "tempest/Vector.hpp"
+#include "tempest/math/CMath.hpp"
+#include "tempest/matrix/C33Matrix.hpp"
 #include <cmath>
 
 C44Matrix C44Matrix::RotationAroundZ(float angle) {
@@ -158,10 +159,20 @@ C44Matrix C44Matrix::Adjoint() const {
 }
 
 C44Matrix C44Matrix::AffineInverse() const {
-    auto move = C3Vector(-this->d0, -this->d1, -this->d2);
+    auto matrix = C44Matrix(C33Matrix(*this).Transpose());
+    matrix.Translate(C3Vector(-this->d0, -this->d1, -this->d2));
+
+    return matrix;
+}
+
+C44Matrix C44Matrix::AffineInverse(float uniformScale) const {
+    if (CMath::fequal(uniformScale, 1.0f)) {
+        return this->AffineInverse();
+    }
 
     auto matrix = C44Matrix(C33Matrix(*this).Transpose());
-    matrix.Translate(move);
+    matrix.Scale(1.0f / (uniformScale * uniformScale));
+    matrix.Translate(C3Vector(-this->d0, -this->d1, -this->d2));
 
     return matrix;
 }
