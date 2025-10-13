@@ -11,8 +11,21 @@ class CMath {
     static constexpr float PI = 3.1415927f;
     static constexpr float TWO_PI = 6.2831855f;
     static constexpr float OO_TWO_PI = 1.0f / TWO_PI;
+    static constexpr float EPSILON = 0.00000023841858f;
 
     // Static functions
+    static float fabs(float x) {
+        return std::fabs(x);
+    }
+
+    static bool fequal(float a, float b) {
+        return CMath::fequalz(a, b, EPSILON);
+    }
+
+    static bool fequalz(float a, float b, float z) {
+        return z > CMath::fabs(a - b);
+    }
+
     static int32_t fint(float n) {
         return static_cast<int32_t>(n);
     }
