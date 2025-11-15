@@ -6,8 +6,8 @@
 class C2iVector {
     public:
     // Member variables
-    int32_t x;
-    int32_t y;
+    int32_t x = 0;
+    int32_t y = 0;
 };
 
 #endif
