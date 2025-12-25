@@ -2,6 +2,10 @@
 #include "tempest/Math.hpp"
 #include "tempest/Matrix.hpp"
 
+C3Vector C3Vector::operator-() const {
+    return { -this->x, -this->y, -this->z };
+}
+
 C3Vector& C3Vector::operator*=(float a) {
     this->x *= a;
     this->y *= a;
