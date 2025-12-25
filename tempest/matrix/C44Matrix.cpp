@@ -222,6 +222,10 @@ C44Matrix C44Matrix::Inverse(float det) const {
     return this->Adjoint() * (1.0f / det);
 }
 
+void C44Matrix::Rotate(const C4Quaternion& rotation) {
+    *this = C44Matrix(rotation) * *this;
+}
+
 void C44Matrix::RotateAroundZ(float angle) {
     *this = C44Matrix::RotationAroundZ(angle) * *this;
 }
