@@ -22,6 +22,7 @@ class C3Vector {
         : x(color.r / 255.0f)
         , y(color.g / 255.0f)
         , z(color.b / 255.0f) {};
+    C3Vector operator-() const;
     C3Vector& operator*=(float a);
     float Mag() const;
     void Normalize();

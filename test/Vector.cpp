@@ -47,6 +47,16 @@ TEST_CASE("C3Vector", "[vector]") {
     }
 }
 
+TEST_CASE("C3Vector::operator-", "[vector]") {
+    SECTION("returns vector with negated values") {
+        auto vector = C3Vector(1.0f, 2.0f, 3.0f);
+        auto negated = -vector;
+        CHECK(negated.x == -1.0f);
+        CHECK(negated.y == -2.0f);
+        CHECK(negated.z == -3.0f);
+    }
+}
+
 TEST_CASE("C3Vector::operator*=", "[vector]") {
     SECTION("multiplies by 2.0f") {
         auto vector = C3Vector(1.0f, 2.0f, 3.0f);
