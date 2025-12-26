@@ -22,4 +22,8 @@ include(lib/system/cmake/system.cmake)
 
 add_subdirectory(lib)
 add_subdirectory(tempest)
-add_subdirectory(test)
+
+# Only build tests when standalone
+if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
+    add_subdirectory(test)
+endif()
