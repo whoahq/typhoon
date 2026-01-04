@@ -54,6 +54,10 @@ class CMath {
         return static_cast<uint32_t>(n + 0.99994999);
     }
 
+    static uint32_t mulhwu(uint32_t x, uint32_t y) {
+        return (y * static_cast<uint64_t>(x)) >> 32;
+    }
+
     static uint32_t rotl3(uint32_t v) {
         return (v << 3) | (v >> 29);
     }
