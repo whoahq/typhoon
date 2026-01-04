@@ -20,6 +20,10 @@ const uint32_t gnoise32[] = {
     0x2664D196, 0x4FCC45D7, 0xB5E9B0C8, 0xEA31D600,
 };
 
+uint32_t CRandom::dice(uint32_t sides, CRndSeed& seed) {
+    return CMath::mulhwu(sides, CRandom::uint32(seed));
+}
+
 uint32_t CRandom::uint32(CRndSeed& seed) {
     auto acc = seed.rndacc;
     auto vls = seed.rndvls;

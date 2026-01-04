@@ -9,6 +9,7 @@ extern const uint32_t gnoise32[];
 class CRandom {
     public:
         // Static functions
+        static uint32_t dice(uint32_t sides, CRndSeed& seed);
         static uint32_t uint32(CRndSeed& seed);
 };
 
