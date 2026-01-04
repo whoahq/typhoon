@@ -2,6 +2,7 @@ file(GLOB TEMPEST_SOURCES
     "*.cpp"
     "matrix/*.cpp"
     "quaternion/*.cpp"
+    "random/*.cpp"
     "rect/*.cpp"
     "vector/*.cpp"
 )
