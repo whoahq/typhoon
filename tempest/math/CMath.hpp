@@ -54,6 +54,18 @@ class CMath {
         return static_cast<uint32_t>(n + 0.99994999);
     }
 
+    static uint32_t rotl3(uint32_t v) {
+        return (v << 3) | (v >> 29);
+    }
+
+    static uint32_t rotl2(uint32_t v) {
+        return (v << 2) | (v >> 30);
+    }
+
+    static uint32_t rotl1(uint32_t v) {
+        return (v << 1) | (v >> 31);
+    }
+
     static float sqrt(float x) {
         STORM_ASSERT(x >= 0.0f);
         return ::sqrt(x);
