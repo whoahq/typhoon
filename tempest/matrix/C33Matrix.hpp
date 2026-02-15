@@ -20,7 +20,10 @@ class C33Matrix {
     C33Matrix();
     C33Matrix(float a0, float a1, float a2, float b0, float b1, float b2, float c0, float c1, float c2);
     C33Matrix(const C44Matrix& m);
+    void FromEulerAnglesZYX(float yaw, float pitch, float roll);
     C33Matrix Transpose() const;
 };
+
+C33Matrix operator*(const C33Matrix& l, const C33Matrix& r);
 
 #endif

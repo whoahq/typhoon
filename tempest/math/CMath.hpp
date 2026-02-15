@@ -14,6 +14,10 @@ class CMath {
     static constexpr float EPSILON = 0.00000023841858f;
 
     // Static functions
+    static float cos(float x) {
+        return std::cos(x);
+    }
+
     static float fabs(float x) {
         return std::fabs(x);
     }
@@ -68,6 +72,10 @@ class CMath {
 
     static uint32_t rotl1(uint32_t v) {
         return (v << 1) | (v >> 31);
+    }
+
+    static float sin(float x) {
+        return std::sin(x);
     }
 
     static float sqrt(float x) {
