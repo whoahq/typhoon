@@ -58,8 +58,22 @@ class CMath {
         return static_cast<uint32_t>(n + 0.99994999);
     }
 
+    static float hypotinv(float x, float y) {
+        float s = (x * x) + (y * y);
+        STORM_ASSERT(s >= 0.0f);
+
+        return CMath::sqrtinv(s);
+    }
+
     static uint32_t mulhwu(uint32_t x, uint32_t y) {
         return (y * static_cast<uint64_t>(x)) >> 32;
+    }
+
+    static void normalize(float& x, float& y) {
+        auto hi = CMath::hypotinv(x, y);
+
+        x *= hi;
+        y *= hi;
     }
 
     static uint32_t rotl3(uint32_t v) {
@@ -81,6 +95,10 @@ class CMath {
     static float sqrt(float x) {
         STORM_ASSERT(x >= 0.0f);
         return ::sqrt(x);
+    }
+
+    static float sqrtinv(float x) {
+        return 1.0f / ::sqrt(x);
     }
 };
 
