@@ -14,6 +14,14 @@ C3Vector& C3Vector::operator*=(float a) {
     return *this;
 }
 
+C3Vector C3Vector::Cross(const C3Vector& l, const C3Vector& r) {
+    return {
+        (l.y * r.z) - (l.z * r.y),
+        (l.z * r.x) - (l.x * r.z),
+        (l.x * r.y) - (l.y * r.x)
+    };
+}
+
 float C3Vector::Mag() const {
     return CMath::sqrt(this->SquaredMag());
 }

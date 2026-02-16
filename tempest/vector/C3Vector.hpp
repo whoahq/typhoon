@@ -7,6 +7,9 @@ class C44Matrix;
 
 class C3Vector {
     public:
+    // Static functions
+    static C3Vector Cross(const C3Vector& l, const C3Vector& r);
+
     // Member variables
     float x = 0.0f;
     float y = 0.0f;
