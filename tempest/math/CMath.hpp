@@ -12,6 +12,7 @@ class CMath {
     static constexpr float TWO_PI = 6.2831855f;
     static constexpr float OO_TWO_PI = 1.0f / TWO_PI;
     static constexpr float EPSILON = 0.00000023841858f;
+    static constexpr float DEG2RAD = PI / 180.0f;
 
     // Static functions
     static float cos(float x) {
