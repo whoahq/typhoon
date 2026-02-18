@@ -8,11 +8,11 @@
 class CMath {
     public:
     // Static variables
-    static constexpr float PI = 3.1415927f;
-    static constexpr float TWO_PI = 6.2831855f;
-    static constexpr float OO_TWO_PI = 1.0f / TWO_PI;
-    static constexpr float EPSILON = 0.00000023841858f;
-    static constexpr float DEG2RAD = PI / 180.0f;
+    static const float PI;
+    static const float TWO_PI;
+    static const float OO_TWO_PI;
+    static const float EPSILON;
+    static const float DEG2RAD;
 
     // Static functions
     static float cos(float x) {
