@@ -51,9 +51,9 @@ C3Vector operator*(const C3Vector& l, const C33Matrix& r) {
 }
 
 C3Vector operator*(const C3Vector& l, const C44Matrix& r) {
-    float x = r.c0 * l.z + r.b0 * l.y + r.a0 * l.x + r.d0;
-    float y = r.c1 * l.z + r.b1 * l.y + r.a1 * l.x + r.d1;
-    float z = r.c2 * l.z + r.b2 * l.y + r.a2 * l.x + r.d2;
+    float x = l.x * r.a0 + l.y * r.b0 + l.z * r.c0 + r.d0;
+    float y = l.x * r.a1 + l.y * r.b1 + l.z * r.c1 + r.d1;
+    float z = l.x * r.a2 + l.y * r.b2 + l.z * r.c2 + r.d2;
 
     return { x, y, z };
 }
