@@ -3,6 +3,7 @@
 
 #include "tempest/vector/CImVector.hpp"
 
+class C33Matrix;
 class C44Matrix;
 
 class C3Vector {
@@ -33,6 +34,8 @@ class C3Vector {
 };
 
 C3Vector operator+(const C3Vector& l, const C3Vector& r);
+
+C3Vector operator*(const C3Vector& l, const C33Matrix& r);
 
 C3Vector operator*(const C3Vector& l, const C44Matrix& r);
 
