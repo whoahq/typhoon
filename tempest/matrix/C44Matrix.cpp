@@ -192,6 +192,22 @@ C44Matrix C44Matrix::AffineInverse(float uniformScale) const {
     return matrix;
 }
 
+C4Vector C44Matrix::Col0() const {
+    return { this->a0, this->b0, this->c0, this->d0 };
+}
+
+C4Vector C44Matrix::Col1() const {
+    return { this->a1, this->b1, this->c1, this->d1 };
+}
+
+C4Vector C44Matrix::Col2() const {
+    return { this->a2, this->b2, this->c2, this->d2 };
+}
+
+C4Vector C44Matrix::Col3() const {
+    return { this->a3, this->b3, this->c3, this->d3 };
+}
+
 float C44Matrix::Determinant() const {
     return (this->b1 * this->c2 * this->d3 + this->c3 * this->b2 * this->d1 + this->b3 * this->c1 * this->d2 - this->c2 * this->b3 * this->d1 - this->d3 * (this->c1 * this->b2) - this->b1 * this->c3 * this->d2) * this->a0 - (this->c2 * this->b0 * this->d3 + this->c3 * this->b2 * this->d0 + this->b3 * this->c0 * this->d2 - this->b3 * this->c2 * this->d0 - this->d3 * (this->c0 * this->b2) - this->b0 * this->c3 * this->d2) * this->a1 + (this->c1 * this->b0 * this->d3 + this->c3 * this->b1 * this->d0 + this->b3 * this->c0 * this->d1 - this->b3 * this->c1 * this->d0 - this->d3 * (this->c0 * this->b1) - this->b0 * this->c3 * this->d1) * this->a2 - (this->c1 * this->b0 * this->d2 + this->c2 * this->b1 * this->d0 + this->b2 * this->c0 * this->d1 - this->b2 * this->c1 * this->d0 - this->d2 * (this->c0 * this->b1) - this->b0 * this->c2 * this->d1) * this->a3;
 }
@@ -228,6 +244,22 @@ void C44Matrix::Rotate(const C4Quaternion& rotation) {
 
 void C44Matrix::RotateAroundZ(float angle) {
     *this = C44Matrix::RotationAroundZ(angle) * *this;
+}
+
+C4Vector C44Matrix::Row0() const {
+    return { this->a0, this->a1, this->a2, this->a3 };
+}
+
+C4Vector C44Matrix::Row1() const {
+    return { this->b0, this->b1, this->b2, this->b3 };
+}
+
+C4Vector C44Matrix::Row2() const {
+    return { this->c0, this->c1, this->c2, this->c3 };
+}
+
+C4Vector C44Matrix::Row3() const {
+    return { this->d0, this->d1, this->d2, this->d3 };
 }
 
 void C44Matrix::Scale(const C3Vector& scale) {

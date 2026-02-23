@@ -4,6 +4,7 @@
 class C33Matrix;
 class C3Vector;
 class C4Quaternion;
+class C4Vector;
 
 class C44Matrix {
     public:
@@ -36,11 +37,19 @@ class C44Matrix {
     C44Matrix Adjoint() const;
     C44Matrix AffineInverse() const;
     C44Matrix AffineInverse(float uniformScale) const;
+    C4Vector Col0() const;
+    C4Vector Col1() const;
+    C4Vector Col2() const;
+    C4Vector Col3() const;
     float Determinant() const;
     void Identity();
     C44Matrix Inverse(float det) const;
     void Rotate(const C4Quaternion& rotation);
     void RotateAroundZ(float angle);
+    C4Vector Row0() const;
+    C4Vector Row1() const;
+    C4Vector Row2() const;
+    C4Vector Row3() const;
     void Scale(const C3Vector& scale);
     void Scale(float scale);
     void Translate(const C3Vector& move);
