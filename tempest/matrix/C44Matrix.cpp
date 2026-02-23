@@ -250,16 +250,32 @@ C4Vector C44Matrix::Row0() const {
     return { this->a0, this->a1, this->a2, this->a3 };
 }
 
+const C3Vector* C44Matrix::Row0AsVec3() const {
+    return reinterpret_cast<const C3Vector*>(&this->a0);
+}
+
 C4Vector C44Matrix::Row1() const {
     return { this->b0, this->b1, this->b2, this->b3 };
+}
+
+const C3Vector* C44Matrix::Row1AsVec3() const {
+    return reinterpret_cast<const C3Vector*>(&this->b0);
 }
 
 C4Vector C44Matrix::Row2() const {
     return { this->c0, this->c1, this->c2, this->c3 };
 }
 
+const C3Vector* C44Matrix::Row2AsVec3() const {
+    return reinterpret_cast<const C3Vector*>(&this->c0);
+}
+
 C4Vector C44Matrix::Row3() const {
     return { this->d0, this->d1, this->d2, this->d3 };
+}
+
+const C3Vector* C44Matrix::Row3AsVec3() const {
+    return reinterpret_cast<const C3Vector*>(&this->d0);
 }
 
 void C44Matrix::Scale(const C3Vector& scale) {

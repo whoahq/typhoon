@@ -47,9 +47,13 @@ class C44Matrix {
     void Rotate(const C4Quaternion& rotation);
     void RotateAroundZ(float angle);
     C4Vector Row0() const;
+    const C3Vector* Row0AsVec3() const;
     C4Vector Row1() const;
+    const C3Vector* Row1AsVec3() const;
     C4Vector Row2() const;
+    const C3Vector* Row2AsVec3() const;
     C4Vector Row3() const;
+    const C3Vector* Row3AsVec3() const;
     void Scale(const C3Vector& scale);
     void Scale(float scale);
     void Translate(const C3Vector& move);
