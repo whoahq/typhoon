@@ -5,6 +5,9 @@ class C44Matrix;
 
 class C33Matrix {
     public:
+    // Static functions
+    static C33Matrix RotationAroundZ(float angle);
+
     // Member variables
     float a0;
     float a1;

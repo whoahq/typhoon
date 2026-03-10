@@ -2,6 +2,25 @@
 #include "tempest/math/CMath.hpp"
 #include "tempest/matrix/C44Matrix.hpp"
 
+C33Matrix C33Matrix::RotationAroundZ(float angle) {
+    float cosAngle = cos(angle);
+    float sinAngle = sin(angle);
+
+    float a0 = cosAngle;
+    float a1 = sinAngle;
+    float a2 = 0.0f;
+
+    float b0 = -sinAngle;
+    float b1 = cosAngle;
+    float b2 = 0.0f;
+
+    float c0 = 0.0f;
+    float c1 = 0.0f;
+    float c2 = 1.0f;
+
+    return { a0, a1, a2, b0, b1, b2, c0, c1, c2 };
+}
+
 C33Matrix::C33Matrix() {
     this->a0 = 1.0f;
     this->a1 = 0.0f;
