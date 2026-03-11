@@ -77,6 +77,11 @@ class CMath {
         y *= hi;
     }
 
+    static float normalizeangle0to2pi(float angle) {
+        angle = fmodf(angle, TWO_PI);
+        return angle < 0.0f ? angle + TWO_PI : angle;
+    }
+
     static uint32_t rotl3(uint32_t v) {
         return (v << 3) | (v >> 29);
     }
