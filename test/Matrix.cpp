@@ -1,5 +1,155 @@
 #include "tempest/Matrix.hpp"
+#include "tempest/Vector.hpp"
 #include "test/Test.hpp"
+
+TEST_CASE("C33Matrix", "[matrix]") {
+    SECTION("constructs identity matrix with default constructor") {
+        C33Matrix matrix;
+        CHECK(matrix.a0 == 1.0f);
+        CHECK(matrix.a1 == 0.0f);
+        CHECK(matrix.a2 == 0.0f);
+        CHECK(matrix.b0 == 0.0f);
+        CHECK(matrix.b1 == 1.0f);
+        CHECK(matrix.b2 == 0.0f);
+        CHECK(matrix.c0 == 0.0f);
+        CHECK(matrix.c1 == 0.0f);
+        CHECK(matrix.c2 == 1.0f);
+    }
+
+    SECTION("constructs with element constructor") {
+        auto matrix = C33Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f);
+        CHECK(matrix.a0 == 1.0f);
+        CHECK(matrix.a1 == 2.0f);
+        CHECK(matrix.a2 == 3.0f);
+        CHECK(matrix.b0 == 4.0f);
+        CHECK(matrix.b1 == 5.0f);
+        CHECK(matrix.b2 == 6.0f);
+        CHECK(matrix.c0 == 7.0f);
+        CHECK(matrix.c1 == 8.0f);
+        CHECK(matrix.c2 == 9.0f);
+    }
+}
+
+TEST_CASE("C33Matrix::RotationAroundZ", "[matrix]") {
+    SECTION("returns identity for 0 degree angle") {
+        auto matrix = C33Matrix::RotationAroundZ(0.0f);
+        CHECK(matrix.a0 == 1.0f);
+        CHECK(matrix.a1 == 0.0f);
+        CHECK(matrix.a2 == 0.0f);
+        CHECK(matrix.b0 == 0.0f);
+        CHECK(matrix.b1 == 1.0f);
+        CHECK(matrix.b2 == 0.0f);
+        CHECK(matrix.c0 == 0.0f);
+        CHECK(matrix.c1 == 0.0f);
+        CHECK(matrix.c2 == 1.0f);
+    }
+
+    SECTION("returns rotation matrix for 180 degree angle") {
+        auto matrix = C33Matrix::RotationAroundZ(3.1415927f);
+        CHECK(matrix.a0 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(matrix.a1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.a2 == 0.0f);
+        CHECK(matrix.b0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b1 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(matrix.b2 == 0.0f);
+        CHECK(matrix.c0 == 0.0f);
+        CHECK(matrix.c1 == 0.0f);
+        CHECK(matrix.c2 == 1.0f);
+    }
+}
+
+TEST_CASE("C33Matrix::Rotation", "[matrix]") {
+    SECTION("returns identity when rotating 0 degrees around any axis") {
+        auto axis = C3Vector(0.0f, 0.0f, 1.0f);
+        auto matrix = C33Matrix::Rotation(0.0f, axis, true);
+        CHECK(matrix.a0 == 1.0f);
+        CHECK(matrix.a1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.a2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b1 == 1.0f);
+        CHECK(matrix.b2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c2 == 1.0f);
+    }
+
+    SECTION("returns 90 degree rotation around Z axis") {
+        auto axis = C3Vector(0.0f, 0.0f, 1.0f);
+        auto matrix = C33Matrix::Rotation(1.5707963f, axis, true);
+        CHECK(matrix.a0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.a1 == Approx(1.0f).margin(0.0000001f));
+        CHECK(matrix.a2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b0 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(matrix.b1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c2 == 1.0f);
+    }
+
+    SECTION("normalizes axis when isNormalized is false") {
+        auto axis = C3Vector(0.0f, 0.0f, 2.0f);
+        auto matrix = C33Matrix::Rotation(1.5707963f, axis, false);
+        CHECK(matrix.a0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.a1 == Approx(1.0f).margin(0.0000001f));
+        CHECK(matrix.a2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b0 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(matrix.b1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c2 == 1.0f);
+    }
+}
+
+TEST_CASE("C33Matrix::Rotate", "[matrix]") {
+    SECTION("applies rotation to identity matrix") {
+        C33Matrix matrix;
+        auto axis = C3Vector(0.0f, 0.0f, 1.0f);
+        matrix.Rotate(1.5707963f, axis, true);
+        CHECK(matrix.a0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.a1 == Approx(1.0f).margin(0.0000001f));
+        CHECK(matrix.a2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b0 == Approx(-1.0f).margin(0.0000001f));
+        CHECK(matrix.b1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.b2 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c0 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c1 == Approx(0.0f).margin(0.0000001f));
+        CHECK(matrix.c2 == 1.0f);
+    }
+}
+
+TEST_CASE("C33Matrix global operators", "[matrix]") {
+    SECTION("C33Matrix * C33Matrix identity") {
+        C33Matrix a;
+        C33Matrix b;
+        auto result = a * b;
+        CHECK(result.a0 == 1.0f);
+        CHECK(result.a1 == 0.0f);
+        CHECK(result.a2 == 0.0f);
+        CHECK(result.b0 == 0.0f);
+        CHECK(result.b1 == 1.0f);
+        CHECK(result.b2 == 0.0f);
+        CHECK(result.c0 == 0.0f);
+        CHECK(result.c1 == 0.0f);
+        CHECK(result.c2 == 1.0f);
+    }
+
+    SECTION("C33Matrix * C33Matrix non-identity") {
+        auto a = C33Matrix(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f);
+        auto b = C33Matrix(9.0f, 8.0f, 7.0f, 6.0f, 5.0f, 4.0f, 3.0f, 2.0f, 1.0f);
+        auto result = a * b;
+        CHECK(result.a0 == 30.0f);
+        CHECK(result.a1 == 24.0f);
+        CHECK(result.a2 == 18.0f);
+        CHECK(result.b0 == 84.0f);
+        CHECK(result.b1 == 69.0f);
+        CHECK(result.b2 == 54.0f);
+        CHECK(result.c0 == 138.0f);
+        CHECK(result.c1 == 114.0f);
+        CHECK(result.c2 == 90.0f);
+    }
+}
 
 TEST_CASE("C44Matrix::RotationAroundZ", "[matrix]") {
     SECTION("returns rotation matrix for 0 degree angle") {

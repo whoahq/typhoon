@@ -1,6 +1,36 @@
 #include "tempest/matrix/C33Matrix.hpp"
 #include "tempest/math/CMath.hpp"
 #include "tempest/matrix/C44Matrix.hpp"
+#include "tempest/vector/C3Vector.hpp"
+
+C33Matrix C33Matrix::Rotation(float angle, const C3Vector& axis, bool isNormalized) {
+    C3Vector axis_ = axis;
+
+    if (!isNormalized) {
+        float invLen = 1.0f / CMath::sqrt(axis_.x * axis_.x + axis_.y * axis_.y + axis_.z * axis_.z);
+        axis_.x *= invLen;
+        axis_.y *= invLen;
+        axis_.z *= invLen;
+    }
+
+    float cosAngle  = CMath::cos(angle);
+    float sinAngle  = CMath::sin(angle);
+    float cosAngle1 = 1.0f - cosAngle;
+
+    float xy = axis_.y * axis_.x * cosAngle1;
+    float xz = axis_.z * axis_.x * cosAngle1;
+    float yz = axis_.z * axis_.y * cosAngle1;
+
+    return {
+        axis_.x * axis_.x * cosAngle1 + cosAngle, xy + axis_.z * sinAngle,            xz - axis_.y * sinAngle,
+        xy - axis_.z * sinAngle,                   axis_.y * axis_.y * cosAngle1 + cosAngle, yz + axis_.x * sinAngle,
+        xz + axis_.y * sinAngle,                   yz - axis_.x * sinAngle,            axis_.z * axis_.z * cosAngle1 + cosAngle
+    };
+}
+
+void C33Matrix::Rotate(float angle, const C3Vector& axis, bool isNormalized) {
+    *this = C33Matrix::Rotation(angle, axis, isNormalized) * *this;
+}
 
 C33Matrix C33Matrix::RotationAroundZ(float angle) {
     float cosAngle = cos(angle);
