@@ -3,29 +3,33 @@
 #include "tempest/matrix/C44Matrix.hpp"
 #include "tempest/vector/C3Vector.hpp"
 
-void C33Matrix::Rotate(float angle, const C3Vector& axis, bool isNormalized) {
-    float x = axis.x;
-    float y = axis.y;
-    float z = axis.z;
+C33Matrix C33Matrix::Rotation(float angle, const C3Vector& axis, bool isNormalized) {
+    C3Vector axis_ = axis;
 
     if (!isNormalized) {
-        float invLen = 1.0f / CMath::sqrt(x * x + y * y + z * z);
-        x *= invLen;
-        y *= invLen;
-        z *= invLen;
+        float invLen = 1.0f / CMath::sqrt(axis_.x * axis_.x + axis_.y * axis_.y + axis_.z * axis_.z);
+        axis_.x *= invLen;
+        axis_.y *= invLen;
+        axis_.z *= invLen;
     }
 
     float cosAngle  = CMath::cos(angle);
     float sinAngle  = CMath::sin(angle);
     float cosAngle1 = 1.0f - cosAngle;
 
-    auto rotation = C33Matrix(
-        x * x * cosAngle1 + cosAngle,     x * y * cosAngle1 + z * sinAngle, x * z * cosAngle1 - y * sinAngle,
-        x * y * cosAngle1 - z * sinAngle, y * y * cosAngle1 + cosAngle,     y * z * cosAngle1 + x * sinAngle,
-        x * z * cosAngle1 + y * sinAngle, y * z * cosAngle1 - x * sinAngle, z * z * cosAngle1 + cosAngle
-    );
+    float xy = axis_.y * axis_.x * cosAngle1;
+    float xz = axis_.z * axis_.x * cosAngle1;
+    float yz = axis_.z * axis_.y * cosAngle1;
 
-    *this = rotation * *this;
+    return {
+        axis_.x * axis_.x * cosAngle1 + cosAngle, xy + axis_.z * sinAngle,            xz - axis_.y * sinAngle,
+        xy - axis_.z * sinAngle,                   axis_.y * axis_.y * cosAngle1 + cosAngle, yz + axis_.x * sinAngle,
+        xz + axis_.y * sinAngle,                   yz - axis_.x * sinAngle,            axis_.z * axis_.z * cosAngle1 + cosAngle
+    };
+}
+
+void C33Matrix::Rotate(float angle, const C3Vector& axis, bool isNormalized) {
+    *this = C33Matrix::Rotation(angle, axis, isNormalized) * *this;
 }
 
 C33Matrix C33Matrix::RotationAroundZ(float angle) {

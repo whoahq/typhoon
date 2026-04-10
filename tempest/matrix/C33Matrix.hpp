@@ -7,6 +7,7 @@ class C44Matrix;
 class C33Matrix {
     public:
     // Static functions
+    static C33Matrix Rotation(float angle, const C3Vector& axis, bool isNormalized);
     static C33Matrix RotationAroundZ(float angle);
 
     // Member variables
